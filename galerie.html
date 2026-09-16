@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galerie — Reisefährten</title>
+<meta name="description" content="Kunstdrucke aus Reise, Natur, Tierwelt und Stadt — Galerie von Reisefährten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="wordmark">Reisefährten</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Menü öffnen">☰</label>
+    <ul class="nav-links">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="galerie.html" aria-current="page">Galerie</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="bestellung.html">Bestellung &amp; FAQ</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem);">Galerie</h1>
+        <p>Eine Auswahl an Motiven aus verschiedenen Reisen. Jeder Druck ist als limitierter Abzug in mehreren Formaten erhältlich — Details auf der jeweiligen Werkseite.</p>
+      </div>
+
+      <nav class="gallery-filters" aria-label="Nach Kategorie filtern">
+        <a href="#" data-filter="alle" aria-current="true">Alle</a>
+        <a href="#" data-filter="reise">Reise</a>
+        <a href="#" data-filter="natur">Natur</a>
+        <a href="#" data-filter="tiere">Tiere</a>
+        <a href="#" data-filter="staedte">Städte</a>
+      </nav>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item is-wide" data-category="reise">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-reise-1.svg" alt="[Platzhalter: Reisemotiv, breites Format]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item" data-category="natur">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-natur-1.svg" alt="[Platzhalter: Naturmotiv]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item is-tall" data-category="tiere">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-tiere-1.svg" alt="[Platzhalter: Tiermotiv, Hochformat]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item" data-category="staedte">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-staedte-1.svg" alt="[Platzhalter: Stadtmotiv]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item" data-category="reise">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-reise-2.svg" alt="[Platzhalter: Reisemotiv]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item is-tall" data-category="tiere">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-tiere-2.svg" alt="[Platzhalter: Tiermotiv, Hochformat]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item" data-category="natur">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-natur-2.svg" alt="[Platzhalter: Naturmotiv]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item is-wide" data-category="staedte">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-staedte-2.svg" alt="[Platzhalter: Stadtmotiv, breites Format]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-item" data-category="reise">
+          <figure>
+            <a href="werk-beispiel.html">
+              <div class="frame">
+                <img src="images/galerie-reise-3.svg" alt="[Platzhalter: Reisemotiv]">
+              </div>
+            </a>
+            <figcaption><strong>[Titel]</strong> — [Ort, Jahr]</figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Reisefährten — Niclas [Nachname]</p>
+    <nav>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/gallery.js"></script>
+</body>
+</html>
