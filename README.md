@@ -64,6 +64,10 @@ Die Schriften werden aktuell direkt von Google-Servern geladen. Für eine Seite 
 2. Bild, Titel, Beschreibung, Formate und Preis in der Kopie anpassen
 3. In `galerie.html` eine neue `.gallery-item`-Kachel ergänzen (bestehende Kachel als Vorlage kopieren) und auf die neue Werkseite verlinken
 
+## Privater Bereich (Alben nur mit Link + Zugriffscode)
+
+Im Ordner `privat/` liegt eine Vorlage für nicht öffentlich gelistete Alben, z. B. für private Urlaubsbilder oder später Shootings — Zugriff nur mit Link und Zugriffscode. Vollständige Anleitung und wichtige Hinweise zu den Grenzen dieses Schutzes: `privat/README.md`.
+
 ## Später: echter Warenkorb/Checkout
 
 Für den Start reicht Anfrage per Formular. Falls später ein direkter Checkout gewünscht ist, lässt sich z. B. [Snipcart](https://snipcart.com) oder ein Shopify-Buy-Button per JavaScript-Snippet nachrüsten, ohne die restliche Seite umzubauen (siehe Konzept-Dokument, Abschnitt 6).

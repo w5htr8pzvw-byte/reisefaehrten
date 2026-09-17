@@ -564,6 +564,22 @@ textarea {
   border-radius: 2px;
 }
 
+/* ---------- Zugriffssperre (privater Bereich) ---------- */
+.access-gate {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+}
+
+.access-gate form {
+  margin-top: var(--space-3);
+  max-width: 22rem;
+}
+
+.access-gate .btn {
+  margin-top: var(--space-1);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--color-border);
