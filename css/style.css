@@ -6,14 +6,18 @@
 
 :root {
   /* Farben */
-  --color-bg: #1a1d1a;          /* Tiefmoor — dunkler Grundton */
-  --color-surface: #23271f;     /* leicht angehobene Fläche für Karten/Abschnitte */
-  --color-surface-raised: #2b3026;
-  --color-border: #3a4034;
-  --color-text: #ede6d8;        /* warmes Knochenweiß */
-  --color-text-muted: #a49c8a;
-  --color-accent: #c08a4e;      /* Sandpfad — warmer Ocker/Rost */
-  --color-accent-soft: #6f8f78; /* gedämpftes Salbeigrün, für sekundäre Akzente */
+  --color-bg: #efe9dc;          /* Kalkstein — warmes Off-White */
+  --color-surface: #e6ddc9;     /* leicht abgesetzte Fläche für Karten/Abschnitte */
+  --color-surface-raised: #ddd2b8;
+  --color-border: #d2c4a3;
+  --color-text: #23231e;        /* warmes Anthrazit statt Schwarz */
+  --color-text-muted: #6d6552;
+  --color-accent: #9c5a2c;      /* Sandpfad — gedeckter Ocker/Rost */
+  --color-accent-soft: #4f6b57; /* gedämpftes Waldgrün, für sekundäre Akzente */
+
+  /* feste Töne nur für Text auf dem Hero-Foto (unabhängig vom Hell/Dunkel-Thema) */
+  --color-hero-text: #f6f1e4;
+  --color-hero-text-muted: rgba(246, 241, 228, 0.85);
 
   /* Typografie */
   --font-display: "Fraunces", Georgia, serif;
@@ -150,7 +154,8 @@ hr.rule {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: linear-gradient(var(--color-bg) 60%, transparent);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
   padding: var(--space-3) 0;
 }
 
@@ -236,11 +241,10 @@ hr.rule {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 82vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  margin-top: calc(var(--space-3) * -1);
 }
 
 .hero img {
@@ -265,8 +269,16 @@ hr.rule {
   max-width: 36rem;
 }
 
+.hero-content h1 {
+  color: var(--color-hero-text);
+}
+
 .hero-content p {
-  color: var(--color-text-muted);
+  color: var(--color-hero-text-muted);
+}
+
+.hero-content .btn--solid:hover {
+  color: var(--color-hero-text);
 }
 
 /* ---------- Buttons & Links ---------- */
@@ -547,7 +559,7 @@ textarea {
 
 .legal .placeholder {
   color: var(--color-accent);
-  background: rgba(192, 138, 78, 0.12);
+  background: rgba(156, 90, 44, 0.12);
   padding: 0.1em 0.4em;
   border-radius: 2px;
 }
