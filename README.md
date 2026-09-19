@@ -17,6 +17,7 @@ datenschutz.html        Datenschutzerklärung-Vorlage
 css/style.css           Sämtliche Gestaltung (Farben, Typografie, Layout)
 js/gallery.js           Kategorie-Filter der Galerie
 images/                 Platzhalterbilder (SVG) — durch echte Fotos ersetzen
+en/                     Englische Fassung aller öffentlichen Seiten (siehe Abschnitt "Zweisprachigkeit")
 ```
 
 ## Design in Kürze
@@ -75,6 +76,17 @@ Falls stattdessen doch GitHub Pages genutzt werden soll: im Repository zu **Sett
 1. `werk-beispiel.html` kopieren und sinnvoll umbenennen (z. B. `werk-fjord-norwegen.html`)
 2. Bild, Titel, Beschreibung, Formate und Preis in der Kopie anpassen
 3. In `galerie.html` eine neue `.gallery-item`-Kachel ergänzen (bestehende Kachel als Vorlage kopieren) und auf die neue Werkseite verlinken
+
+## Zweisprachigkeit (Deutsch/Englisch)
+
+Der kleine „EN"/„DE"-Button rechts in der Navigation jeder Seite schaltet zwischen den Sprachversionen um. Technisch sind das zwei vollständig getrennte Seiten (keine Übersetzung per JavaScript) — dadurch bleiben beide Versionen für Suchmaschinen auffindbar und funktionieren auch ganz ohne JavaScript.
+
+- Alle deutschen Seiten liegen wie bisher im Hauptverzeichnis
+- Alle englischen Seiten liegen unter `en/` (z. B. `en/gallery.html`, `en/contact.html`) und verlinken per `../` zurück auf `css/`, `js/` und `images/` im Hauptverzeichnis — Bilder müssen also nicht doppelt gepflegt werden
+- Das Kontaktformular existiert auf Englisch als eigenes Netlify-Formular namens `contact` (statt `kontakt`), damit sich Anfragen im Netlify-Dashboard nach Sprache unterscheiden lassen
+- Impressum und Datenschutz sind auf Englisch als unverbindliche Übersicht gekennzeichnet — rechtlich maßgeblich bleiben die deutschen Versionen (so verlangt es die Impressumspflicht für ein deutsches Gewerbe)
+
+**Wichtig beim Pflegen:** Wer Inhalte ändert (neue Preise, neue Werke, geänderte Texte), sollte die passende Seite in `en/` von Hand mitpflegen — es gibt keinen automatischen Abgleich zwischen den Sprachversionen. Eine neue Werkseite braucht entsprechend eine deutsche (`werk-xyz.html`) und eine englische Fassung (`en/artwork-xyz.html`).
 
 ## Privater Bereich (Alben nur mit Link + Zugriffscode)
 

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.setAttribute("aria-current", "true");
 
       items.forEach(function (item) {
-        var match = filter === "alle" || item.getAttribute("data-category") === filter;
+        var match = filter === "alle" || filter === "all" || item.getAttribute("data-category") === filter;
         item.style.display = match ? "" : "none";
       });
     });
