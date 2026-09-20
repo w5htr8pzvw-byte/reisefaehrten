@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+lang: de
+title: Datenschutz — Reisefährten
+navActive: kontakt
+langSwitchUrl: /en/privacy/
+fullName: "[Vor- und Nachname]"
+address: "[Anschrift]"
+email: "[E-Mail-Adresse]"
+---
+<main>
+  <section class="section--tight">
+    <div class="container legal">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.6rem);">Datenschutzerklärung</h1>
+
+      <p style="color: var(--color-text-muted);"><em>Auch dies ist ein unverbindliches Gerüst, keine Rechtsberatung. Bitte alle <span class="placeholder">[Platzhalter]</span> ausfüllen und vor Veröffentlichung rechtlich prüfen lassen.</em></p>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        {{ fullName }}<br>
+        {{ address }}<br>
+        E-Mail: {{ email }}
+      </p>
+
+      <h2>2. Hosting über Netlify</h2>
+      <p>Diese Website wird über Netlify gehostet (Netlify, Inc.). Beim Aufruf der Seite verarbeitet Netlify automatisch technische Daten wie die IP-Adresse in Server-Logfiles, u. a. zur Auslieferung der Seite und zur Absicherung gegen Missbrauch. Details: <a href="https://www.netlify.com/privacy/" class="text-link" target="_blank" rel="noopener">Netlify Privacy Policy</a>.</p>
+
+      <h2>3. Kontaktformular</h2>
+      <p>Das Kontaktformular wird über die in Netlify integrierte Funktion „Netlify Forms" verarbeitet (kein separater Drittanbieter). Die eingegebenen Daten (Name, E-Mail, Nachricht) werden dazu an Netlify übermittelt und im dortigen Formular-Postfach gespeichert bzw. per E-Mail-Benachrichtigung weitergeleitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Bearbeitung einer Anfrage). Details siehe Netlify Privacy Policy (Abschnitt 2). Ein verstecktes Zusatzfeld dient ausschließlich der Spam-Abwehr (Honeypot) und wird nicht ausgewertet, wenn es leer bleibt.</p>
+
+      <h2>4. Google Fonts</h2>
+      <p>Diese Seite bindet die Schriftarten „Fraunces" und „Work Sans" über Google Fonts ein, wobei die Schriftdateien beim Seitenaufruf von Servern von Google geladen werden — dabei kann die IP-Adresse an Google übertragen werden. <strong>Hinweis:</strong> Für Websites mit Fokus auf deutsche Besucher:innen empfiehlt es sich aus Datenschutzsicht, Google Fonts stattdessen selbst zu hosten, um diese Datenübertragung zu vermeiden. <span class="placeholder">[Nach Umstellung auf selbst gehostete Schriften diesen Abschnitt entfernen.]</span></p>
+
+      <h2>5. Cookies &amp; Analyse-Tools</h2>
+      <p>Diese Website setzt in der Grundausstattung keine Analyse- oder Marketing-Cookies ein. <span class="placeholder">[Falls später z. B. ein Statistik-Tool ergänzt wird, hier Anbieter, Zweck und Rechtsgrundlage ergänzen.]</span></p>
+
+      <h2>6. Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Widerspruchsrecht gegen die Verarbeitung und ein Recht auf Datenübertragbarkeit. Zudem besteht ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde.</p>
+
+      <h2>7. SSL-/TLS-Verschlüsselung</h2>
+      <p>Diese Seite nutzt aus Sicherheitsgründen eine SSL-/TLS-Verschlüsselung (erkennbar am „https://" in der Adresszeile), die von Netlify standardmäßig bereitgestellt wird.</p>
+    </div>
+  </section>
+</main>

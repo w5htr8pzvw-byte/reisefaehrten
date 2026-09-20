@@ -1,0 +1,13 @@
+{
+  "name": "reisefaehrten-11ty",
+  "version": "1.0.0",
+  "description": "Reisefährten — Website (Eleventy + Sveltia CMS)",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

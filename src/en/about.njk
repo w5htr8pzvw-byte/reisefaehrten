@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+lang: en
+title: About — Reisefährten
+description: The person and the idea behind Reisefährten.
+navActive: ueber-mich
+langSwitchUrl: /ueber-mich/
+introText1: I'm Niclas. I've been taking photographs for a long time, but it was travelling that turned it into more than a hobby — the wish to capture individual moments in a way that still means something years later.
+introText2: Reisefährten is the collection of images where that actually worked — chosen deliberately, not just anything, and meant to be printed, not just filed away.
+processTitle: From shutter to print
+processText: "[Describe in your own words: how do you choose which motifs make it in? What matters to you in editing? Why this particular paper/print partner?]"
+processText2: Every motif in the gallery is edited individually and printed in small batches — not an automated photo-lab process, but the same care that went into choosing the shot in the first place.
+closingTitle: Questions about a piece or custom work?
+closingText: I'm always happy to hear from you — whether about an existing motif, a particular size, or a trip that doesn't have its own image in the gallery yet.
+portraitImage: /images/ueber-mich-portrait.svg
+portraitImageAlt: "[Placeholder: portrait photo]"
+---
+<main>
+  <section class="section--tight">
+    <div class="container">
+      <div class="split">
+        <div>
+          <div class="frame">
+            <img src="{{ portraitImage }}" alt="{{ portraitImageAlt }}">
+          </div>
+        </div>
+        <div>
+          <h1>About me</h1>
+          <p>{{ introText1 }}</p>
+          <p>{{ introText2 }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ processTitle }}</h2>
+        <p>{{ processText }}</p>
+      </div>
+      <p class="wide">{{ processText2 }}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{{ closingTitle }}</h2>
+      <p>{{ closingText }}</p>
+      <a href="/en/contact/" class="btn">Get in touch</a>
+    </div>
+  </section>
+</main>

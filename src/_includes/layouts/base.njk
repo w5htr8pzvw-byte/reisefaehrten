@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+{%- if description %}
+<meta name="description" content="{{ description }}">
+{%- endif %}
+{%- if robotsNoindex %}
+<meta name="robots" content="noindex, nofollow">
+{%- endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    {%- if lang == "de" %}
+    <a href="/" class="wordmark">Reisefährten</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Menü öffnen">☰</label>
+    <ul class="nav-links">
+      <li><a href="/"{% if navActive == "start" %} aria-current="page"{% endif %}>Start</a></li>
+      <li><a href="/galerie/"{% if navActive == "galerie" %} aria-current="page"{% endif %}>Galerie</a></li>
+      <li><a href="/ueber-mich/"{% if navActive == "ueber-mich" %} aria-current="page"{% endif %}>Über mich</a></li>
+      <li><a href="/bestellung/"{% if navActive == "bestellung" %} aria-current="page"{% endif %}>Bestellung &amp; FAQ</a></li>
+      <li><a href="/kontakt/"{% if navActive == "kontakt" %} aria-current="page"{% endif %}>Kontakt</a></li>
+      <li class="lang-switch"><a href="{{ langSwitchUrl | default('/en/') }}" hreflang="en">EN</a></li>
+    </ul>
+    {%- else %}
+    <a href="/en/" class="wordmark">Reisefährten</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">☰</label>
+    <ul class="nav-links">
+      <li><a href="/en/"{% if navActive == "start" %} aria-current="page"{% endif %}>Home</a></li>
+      <li><a href="/en/gallery/"{% if navActive == "galerie" %} aria-current="page"{% endif %}>Gallery</a></li>
+      <li><a href="/en/about/"{% if navActive == "ueber-mich" %} aria-current="page"{% endif %}>About</a></li>
+      <li><a href="/en/ordering/"{% if navActive == "bestellung" %} aria-current="page"{% endif %}>Ordering &amp; FAQ</a></li>
+      <li><a href="/en/contact/"{% if navActive == "kontakt" %} aria-current="page"{% endif %}>Contact</a></li>
+      <li class="lang-switch"><a href="{{ langSwitchUrl | default('/') }}" hreflang="de">DE</a></li>
+    </ul>
+    {%- endif %}
+  </div>
+</header>
+
+{{ content | safe }}
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2026 Reisefährten — Niclas [Nachname]</p>
+    <nav>
+      {%- if lang == "de" %}
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+      {%- else %}
+      <a href="/en/imprint/">Imprint</a>
+      <a href="/en/privacy/">Privacy</a>
+      {%- endif %}
+      <a href="https://www.instagram.com/meine_reisefaehrten/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
