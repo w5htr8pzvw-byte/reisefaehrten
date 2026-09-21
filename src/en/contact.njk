@@ -17,23 +17,21 @@ contactEmail: hallo@meine-reisefaehrten.de
       </div>
 
       <!--
-        This form also runs on Netlify Forms, kept as a separate
-        named form ("contact") so English submissions are easy to
-        tell apart from the German ones ("kontakt") in the Netlify
-        dashboard.
+        NOTE: Cloudflare Pages does not process forms itself.
+        This form runs via Formspree (https://formspree.io):
+        1. Create a free account at formspree.io
+        2. Create a new form, add your email address
+        3. Enter the shown form ID below instead of "YOUR-FORM-ID"
       -->
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/en/thank-you/">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="position: absolute; left: -9999px;" aria-hidden="true">
-          <label>Leave this field blank: <input name="bot-field"></label>
-        </p>
+      <form action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+        <input type="hidden" name="_next" value="https://meine-reisefaehrten.de/en/thank-you/">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="_replyto" required>
         </div>
         <div>
           <label for="motiv">Motif / size (optional)</label>

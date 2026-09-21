@@ -17,21 +17,21 @@ contactEmail: hallo@meine-reisefaehrten.de
       </div>
 
       <!--
-        Formular läuft über Netlify Forms (kein externer Dienst nötig,
-        Netlify erkennt "data-netlify" beim Deployment automatisch).
+        HINWEIS: Cloudflare Pages verarbeitet Formulare nicht selbst.
+        Dieses Formular läuft daher über Formspree (https://formspree.io):
+        1. Kostenlosen Account bei formspree.io anlegen
+        2. Neues Formular erstellen, eigene E-Mail-Adresse hinterlegen
+        3. Die dort angezeigte Form-ID unten bei "DEINE-FORM-ID" eintragen
       -->
-      <form name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke/">
-        <input type="hidden" name="form-name" value="kontakt">
-        <p style="position: absolute; left: -9999px;" aria-hidden="true">
-          <label>Bitte leer lassen: <input name="bot-field"></label>
-        </p>
+      <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST">
+        <input type="hidden" name="_next" value="https://meine-reisefaehrten.de/danke/">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div>
           <label for="email">E-Mail</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="_replyto" required>
         </div>
         <div>
           <label for="motiv">Motiv / Format (optional)</label>
