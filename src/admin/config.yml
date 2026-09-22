@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: DEIN-GITHUB-NAME/DEIN-REPO-NAME
+  repo: w5htr8pzvw-byte/reisefaehrten
   branch: main
 
 media_folder: "src/images/werke"
