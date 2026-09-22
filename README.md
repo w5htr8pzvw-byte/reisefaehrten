@@ -1,16 +1,16 @@
-# Reisefährten — Eleventy + Sveltia CMS (Cloudflare Pages)
+# Reisefährten — Eleventy + Sveltia CMS (Cloudflare)
 
 Diese Version der Website ist auf [Eleventy](https://www.11ty.dev/) umgestellt: Inhalte (Werke, Seitentexte) liegen jetzt in eigenen Dateien, das Design/Layout ist zentral in wenigen Vorlagen definiert. Über [Sveltia CMS](https://github.com/sveltia/sveltia-cms) lassen sich diese Inhalte bequem über ein Formular im Browser bearbeiten — ganz ohne Code.
 
-Gehostet wird über **Cloudflare Pages** statt Netlify (Grund: Netlify-Freikontingent war aufgebraucht; Cloudflare Pages erlaubt 500 Builds/Monat kostenlos, deutlich mehr Spielraum für häufige kleine Änderungen).
+Gehostet wird über **Cloudflare** statt Netlify (Grund: Netlify-Freikontingent war aufgebraucht; Cloudflare erlaubt 500 Builds/Monat kostenlos, deutlich mehr Spielraum für häufige kleine Änderungen).
 
 **Konfigurationsdatei:** Die Eleventy-Konfiguration liegt jetzt in `eleventy.config.mjs` (ESM) im Hauptordner, nicht mehr in `.eleventy.js`. Bitte bei zukünftigen Anpassungen nur diese eine Datei verwenden — zwei gleichzeitig vorhandene Konfigurationsdateien führen dazu, dass Eleventy nur eine davon zufällig auswählt und die andere stillschweigend ignoriert.
 
-**Kosten: weiterhin 0 €.** Eleventy, Sveltia CMS, GitHub, Cloudflare Pages und Formspree sind in dieser Größenordnung komplett kostenlos.
+**Kosten: weiterhin 0 €.** Eleventy, Sveltia CMS, GitHub, Cloudflare und Formspree sind in dieser Größenordnung komplett kostenlos.
 
 ## Wichtiger Hinweis zum Testen
 
-Ich konnte den eigentlichen Eleventy-Build in meiner Umgebung nicht live ausführen (kein Internetzugriff auf npm dort). Ich habe die Logik aller Vorlagen deshalb ersatzweise mit einer gleichwertigen Template-Engine (Jinja2) durchgerechnet — alle 34 Seiten (16 feste Seiten + 18 Werke) rendern dabei fehlerfrei, inklusive der automatischen Galerie-Liste. Der **erste echte Test** ist trotzdem der erste Cloudflare-Pages-Build nach dem Hochladen. Cloudflare Pages legt bei jedem Deployment automatisch eine Vorschau-URL an, bevor etwas auf die eigentliche Domain geht — dort lässt sich alles in Ruhe prüfen. Falls doch etwas nicht passt: die Fehlermeldung aus dem Build-Log hier reinkopieren.
+Ich konnte den eigentlichen Eleventy-Build in meiner Umgebung nicht live ausführen (kein Internetzugriff auf npm dort). Ich habe die Logik aller Vorlagen deshalb ersatzweise mit einer gleichwertigen Template-Engine (Jinja2) durchgerechnet — alle 34 Seiten (16 feste Seiten + 18 Werke) rendern dabei fehlerfrei, inklusive der automatischen Galerie-Liste. Der **erste echte Test** ist trotzdem der erste Cloudflare-Build nach dem Hochladen. Bei aktivierten "Builds für Nicht-Produktions-Branches" legt Cloudflare bei jedem Deployment automatisch eine Vorschau-URL an, bevor etwas auf die eigentliche Domain geht — dort lässt sich alles in Ruhe prüfen. Falls doch etwas nicht passt: die Fehlermeldung aus dem Build-Log hier reinkopieren.
 
 ## Was sich strukturell ändert
 
@@ -30,23 +30,26 @@ src/
   css/ js/ images/ privat/   Unverändert wie bisher
   index.njk, galerie.njk, …   Deutsche Seiten
 eleventy.config.mjs        Eleventy-Konfiguration
-package.json              Nennt Eleventy als Abhängigkeit
+wrangler.toml              Cloudflare-Konfiguration (sagt Cloudflare, wo die gebaute Seite liegt)
+package.json              Nennt Eleventy und Wrangler als Abhängigkeiten
 ```
 
-## Umzug auf Cloudflare Pages
+## Deployment bei Cloudflare
+
+Wichtiger Hinweis: Cloudflares "Create an app"-Assistent führt inzwischen standardmäßig über **Workers** statt über das früher separate Produkt "Pages" (Cloudflare führt beides schrittweise zusammen). Das ist kein Fehler deinerseits — nur eine andere technische Schiene für dasselbe Ergebnis (eine gehostete statische Seite). Dafür ist jetzt eine `wrangler.toml`-Datei im Projekt dabei, die Cloudflare sagt, wo die fertig gebaute Seite liegt.
 
 1. Dieses Projekt (kompletter Ordnerinhalt) ins bestehende GitHub-Repository hochladen — ersetzt den bisherigen Inhalt (inklusive Löschen der alten `.eleventy.js`, die durch `eleventy.config.mjs` ersetzt wurde)
-2. Bei [Cloudflare](https://dash.cloudflare.com) einloggen bzw. Account anlegen → **Workers & Pages → Create → Pages → Connect to Git** → das GitHub-Repository auswählen
-3. Build-Einstellungen eintragen:
-   - **Build command:** `npx @11ty/eleventy`
-   - **Build output directory:** `_site`
-4. Nach dem ersten Deployment läuft die Seite unter einer `*.pages.dev`-Adresse — dort erstmal alles durchklicken und prüfen
-5. Eigene Domain verbinden: im Pages-Projekt unter **Custom domains** `meine-reisefaehrten.de` hinzufügen. Cloudflare führt danach durch die DNS-Umstellung — einfachster Weg: die Domain komplett zu Cloudflare umziehen (bei INWX die von Cloudflare angezeigten Nameserver eintragen). Das ist derselbe Domain-Umzug-Vorgang wie er auch für Netlify nötig gewesen wäre, nur mit Cloudflare als Ziel
+2. Im "Anwendung einrichten"-Formular (wie im Screenshot) folgende Werte eintragen:
+   - **Build-Befehl:** `npx @11ty/eleventy` (so wie schon eingetragen)
+   - **Bereitstellungsbefehl:** `npx wrangler deploy` (Cloudflares Vorschlag so übernehmen)
+3. Bereitstellen klicken — Wrangler liest dabei automatisch `wrangler.toml` aus und lädt den Inhalt von `_site` hoch
+4. Nach dem ersten Deployment läuft die Seite unter einer `*.workers.dev`-Adresse — dort erstmal alles durchklicken und prüfen
+5. Eigene Domain verbinden: im Projekt unter **Settings → Domains & Routes → Custom Domains** `meine-reisefaehrten.de` hinzufügen (da die Domain schon bei Cloudflare liegt, ist das nur noch ein Klick, keine erneute DNS-Umstellung nötig)
 6. Cloudflare stellt danach automatisch ein kostenloses SSL-Zertifikat aus
 
 ## Formulare: Formspree statt Netlify Forms
 
-Cloudflare Pages hat keine eingebaute Formularverarbeitung (anders als Netlify). Die Formulare in `kontakt.njk` und `en/contact.njk` sind daher wieder auf [Formspree](https://formspree.io) umgestellt:
+Cloudflare hat keine eingebaute Formularverarbeitung (anders als Netlify). Die Formulare in `kontakt.njk` und `en/contact.njk` sind daher wieder auf [Formspree](https://formspree.io) umgestellt:
 
 1. Kostenlosen Account bei formspree.io anlegen
 2. Zwei Formulare anlegen (eins für Deutsch, eins für Englisch — oder auch nur eins für beide, dann reicht eine ID)
@@ -76,7 +79,7 @@ Falls doch einmal zurückgewechselt werden soll: Build command `npx @11ty/eleven
    - Das Token einmal sicher aufbewahren (z. B. Passwort-Manager) — GitHub zeigt es danach nicht noch einmal an
 4. Danach siehst du die Bearbeitungsoberfläche mit den Bereichen "Werke (Deutsch)", "Works (English)", "Seiteninhalte (Deutsch)" und "Page content (English)"
 
-Jede Änderung, die du im CMS speicherst, landet automatisch als Commit in deinem GitHub-Repository — Cloudflare Pages baut die Seite danach von selbst neu (dauert meist ein bis zwei Minuten).
+Jede Änderung, die du im CMS speicherst, landet automatisch als Commit in deinem GitHub-Repository — Cloudflare baut die Seite danach von selbst neu (dauert meist ein bis zwei Minuten).
 
 ## Was du jetzt ohne meine Hilfe machen kannst
 
@@ -91,7 +94,7 @@ Jede Änderung, die du im CMS speicherst, landet automatisch als Commit in deine
 - Neue Seitentypen, Design-Änderungen, neue Funktionen (z. B. die vorgeschlagene Weltkarte, Newsletter, etc.)
 - Änderungen an Impressum/Datenschutz-**Rechtstexten** selbst (nicht nur den Adressfeldern)
 - Alles rund um den privaten Bereich (`privat/`) — der ist bewusst unverändert und nicht ans CMS angebunden
-- Fehlermeldungen aus dem Cloudflare-Pages-Build-Log, falls doch mal etwas nicht durchläuft
+- Fehlermeldungen aus dem Cloudflare-Build-Log, falls doch mal etwas nicht durchläuft
 
 ## Rechtliches beachten
 
