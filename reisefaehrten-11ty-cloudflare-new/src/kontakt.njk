@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+lang: de
+title: Kontakt — Reisefährten
+description: Kontakt zu Reisefährten — für Fragen zu Motiven, Formaten oder Auftragsarbeiten.
+navActive: kontakt
+langSwitchUrl: /en/contact/
+introText: Ob Frage zu einem Motiv, einem Format oder eine eigene Idee — kurze Nachricht genügt.
+contactEmail: hallo@meine-reisefaehrten.de
+---
+<main>
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem);">Kontakt</h1>
+        <p>{{ introText }}</p>
+      </div>
+
+      <!--
+        HINWEIS: Cloudflare Pages verarbeitet Formulare nicht selbst.
+        Dieses Formular läuft daher über Formspree (https://formspree.io):
+        1. Kostenlosen Account bei formspree.io anlegen
+        2. Neues Formular erstellen, eigene E-Mail-Adresse hinterlegen
+        3. Die dort angezeigte Form-ID unten bei "DEINE-FORM-ID" eintragen
+      -->
+      <form action="https://formspree.io/f/DEINE-FORM-ID" method="POST">
+        <input type="hidden" name="_next" value="https://meine-reisefaehrten.de/danke/">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="_replyto" required>
+        </div>
+        <div>
+          <label for="motiv">Motiv / Format (optional)</label>
+          <input type="text" id="motiv" name="motiv" placeholder="z. B. [Titel des Motivs], 60×40 cm">
+        </div>
+        <div>
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="message" required></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn--solid">Nachricht senden</button>
+        </div>
+      </form>
+
+      <p style="margin-top: var(--space-4); color: var(--color-text-muted);">
+        Lieber direkt schreiben? <a href="mailto:{{ contactEmail }}" class="text-link">{{ contactEmail }}</a>
+        · <a href="https://www.instagram.com/meine_reisefaehrten/" class="text-link" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </div>
+  </section>
+</main>

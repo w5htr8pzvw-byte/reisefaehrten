@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+lang: de
+title: Galerie — Reisefährten
+description: Kunstdrucke aus Reise, Natur, Tierwelt und Stadt — Galerie von Reisefährten.
+navActive: galerie
+langSwitchUrl: /en/gallery/
+introText: Eine Auswahl an Motiven aus verschiedenen Reisen. Jeder Druck ist als limitierter Abzug in mehreren Formaten erhältlich — Details auf der jeweiligen Werkseite.
+---
+<main>
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem);">Galerie</h1>
+        <p>{{ introText }}</p>
+      </div>
+
+      <nav class="gallery-filters" aria-label="Nach Kategorie filtern">
+        <a href="#" data-filter="alle" aria-current="true">Alle</a>
+        <a href="#" data-filter="reise">Reise</a>
+        <a href="#" data-filter="natur">Natur</a>
+        <a href="#" data-filter="tiere">Tiere</a>
+        <a href="#" data-filter="staedte">Städte</a>
+      </nav>
+
+      <div class="gallery-grid">
+        {%- for werk in collections.werkeDe %}
+        <div class="gallery-item{% if werk.data.wide %} is-wide{% endif %}{% if werk.data.tall %} is-tall{% endif %}" data-category="{{ werk.data.category }}">
+          <figure>
+            <a href="{{ werk.url }}">
+              <div class="frame">
+                <img src="{{ werk.data.image }}" alt="{{ werk.data.imageAlt }}">
+              </div>
+            </a>
+            <figcaption><strong>{{ werk.data.title }}</strong> — {{ werk.data.place }}{% if werk.data.year %}, {{ werk.data.year }}{% endif %}</figcaption>
+          </figure>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/js/gallery.js"></script>

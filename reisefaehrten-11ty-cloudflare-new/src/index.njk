@@ -1,0 +1,90 @@
+---
+layout: layouts/base.njk
+lang: de
+title: Reisefährten — Kunstdrucke aus Reise, Natur & Tierwelt
+description: "Reisefährten: limitierte Kunstdrucke aus eigener Reise-, Natur- und Tierfotografie. Handverlesene Motive, hochwertig gedruckt."
+navActive: start
+langSwitchUrl: /en/
+heroImage: /images/hero-startseite.svg
+heroImageAlt: "[Platzhalter: charakteristisches Reise- oder Landschaftsfoto]"
+heroTitle: Bilder, die den Weg zurück in die Ferne öffnen
+heroText: Handverlesene Kunstdrucke aus eigenen Reisen — Landschaften, Tiere und Städte, festgehalten unterwegs und als limitierte Abzüge auf hochwertigem Papier gedruckt.
+introTitle: Willkommen bei Reisefährten
+introText: Hier sammle ich Fotografien, die auf dem Weg entstanden sind — vom Gipfelgrat bis zum Straßenrand einer fremden Stadt. Jeder Druck erzählt kurz, wo er aufgenommen wurde und was den Moment besonders gemacht hat.
+aboutTeaserText: "Ich bin Niclas — unterwegs mit der Kamera, wenn andere im Urlaub die Füße hochlegen. Reisefährten ist aus der Frage entstanden, was mit den Bildern passieren soll, die mehr als nur ein Erinnerungsfoto sind."
+closingTitle: Weitere Motive entdecken
+closingText: Von Küstenlandschaften bis zu Tierbegegnungen — die Galerie wächst mit jeder neuen Reise. Wie ein Druck seinen Weg zu dir findet, steht in Ruhe zum Nachlesen bereit, sobald ein Motiv gefunden ist.
+portraitImage: /images/ueber-mich-portrait.svg
+portraitImageAlt: "[Platzhalter: Porträt oder Signatur-Motiv]"
+---
+<section class="hero">
+  <img src="{{ heroImage }}" alt="{{ heroImageAlt }}">
+  <div class="hero-content">
+    <h1>{{ heroTitle }}</h1>
+    <p>{{ heroText }}</p>
+    <a href="/galerie/" class="btn btn--solid">Galerie ansehen</a>
+  </div>
+</section>
+
+<main>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h2>{{ introTitle }}</h2>
+        <p>{{ introText }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="section-head">
+        <h2>Ausgewählte Werke</h2>
+      </div>
+      <div class="card-row">
+        {%- for werk in collections.werkeDe | reverse %}
+        {%- if loop.index <= 3 %}
+        <article>
+          <a href="{{ werk.url }}">
+            <div class="frame">
+              <img src="{{ werk.data.image }}" alt="{{ werk.data.imageAlt }}">
+            </div>
+          </a>
+          <h3 style="margin-top: 0.8rem;">{{ werk.data.title }}</h3>
+          <p style="color: var(--color-text-muted); max-width: none;">{{ werk.data.place }}{% if werk.data.year %}, {{ werk.data.year }}{% endif %}</p>
+        </article>
+        {%- endif %}
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="split">
+        <div>
+          <div class="frame">
+            <img src="{{ portraitImage }}" alt="{{ portraitImageAlt }}">
+          </div>
+        </div>
+        <div>
+          <h2>Hinter der Kamera</h2>
+          <p>{{ aboutTeaserText }}</p>
+          <p><a href="/ueber-mich/" class="text-link">Mehr über mich und meine Arbeitsweise</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="text-align: left;">
+      <h2>{{ closingTitle }}</h2>
+      <p>{{ closingText }}</p>
+      <a href="/galerie/" class="btn btn--solid">Zur Galerie</a>
+    </div>
+  </section>
+
+</main>
