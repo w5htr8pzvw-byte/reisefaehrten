@@ -17,21 +17,25 @@ contactEmail: hallo@meine-reisefaehrten.de
       </div>
 
       <!--
-        HINWEIS: Cloudflare Pages verarbeitet Formulare nicht selbst.
-        Dieses Formular läuft daher über Formspree (https://formspree.io):
-        1. Kostenlosen Account bei formspree.io anlegen
-        2. Neues Formular erstellen, eigene E-Mail-Adresse hinterlegen
-        3. Die dort angezeigte Form-ID unten bei "DEINE-FORM-ID" eintragen
+        HINWEIS: Cloudflare verarbeitet Formulare nicht selbst.
+        Dieses Formular läuft über Web3Forms (https://web3forms.com) —
+        anders als Formspree ist der Redirect zur eigenen Dankeseite
+        dort auch im Gratis-Tarif enthalten:
+        1. Auf web3forms.com den Access Key erstellen (eigene E-Mail-Adresse angeben)
+        2. Den per E-Mail zugesandten Access Key unten bei "DEIN-ACCESS-KEY" eintragen
       -->
-      <form action="https://formspree.io/f/maenjyne" method="POST">
-        <input type="hidden" name="_next" value="https://meine-reisefaehrten.de/danke/">
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="DEIN-ACCESS-KEY">
+        <input type="hidden" name="subject" value="Neue Nachricht über Reisefährten">
+        <input type="hidden" name="redirect" value="https://meine-reisefaehrten.de/danke/">
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div>
           <label for="email">E-Mail</label>
-          <input type="email" id="email" name="_replyto" required>
+          <input type="email" id="email" name="email" required>
         </div>
         <div>
           <label for="motiv">Motiv / Format (optional)</label>

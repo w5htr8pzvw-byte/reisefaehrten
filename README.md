@@ -6,7 +6,7 @@ Gehostet wird über **Cloudflare** statt Netlify (Grund: Netlify-Freikontingent 
 
 **Konfigurationsdatei:** Die Eleventy-Konfiguration liegt jetzt in `eleventy.config.mjs` (ESM) im Hauptordner, nicht mehr in `.eleventy.js`. Bitte bei zukünftigen Anpassungen nur diese eine Datei verwenden — zwei gleichzeitig vorhandene Konfigurationsdateien führen dazu, dass Eleventy nur eine davon zufällig auswählt und die andere stillschweigend ignoriert.
 
-**Kosten: weiterhin 0 €.** Eleventy, Sveltia CMS, GitHub, Cloudflare und Formspree sind in dieser Größenordnung komplett kostenlos.
+**Kosten: weiterhin 0 €.** Eleventy, Sveltia CMS, GitHub, Cloudflare und Web3Forms sind in dieser Größenordnung komplett kostenlos.
 
 ## Wichtiger Hinweis zum Testen
 
@@ -47,13 +47,14 @@ Wichtiger Hinweis: Cloudflares "Create an app"-Assistent führt inzwischen stand
 5. Eigene Domain verbinden: im Projekt unter **Settings → Domains & Routes → Custom Domains** `meine-reisefaehrten.de` hinzufügen (da die Domain schon bei Cloudflare liegt, ist das nur noch ein Klick, keine erneute DNS-Umstellung nötig)
 6. Cloudflare stellt danach automatisch ein kostenloses SSL-Zertifikat aus
 
-## Formulare: Formspree statt Netlify Forms
+## Formulare: Web3Forms statt Netlify Forms
 
-Cloudflare hat keine eingebaute Formularverarbeitung (anders als Netlify). Die Formulare in `kontakt.njk` und `en/contact.njk` sind daher wieder auf [Formspree](https://formspree.io) umgestellt:
+Cloudflare hat keine eingebaute Formularverarbeitung (anders als Netlify). Die Formulare in `kontakt.njk` und `en/contact.njk` laufen daher über [Web3Forms](https://web3forms.com) — im Unterschied zu Formspree ist der Redirect zur eigenen Dankeseite dort auch im Gratis-Tarif (250 Einsendungen/Monat) enthalten:
 
-1. Kostenlosen Account bei formspree.io anlegen
-2. Zwei Formulare anlegen (eins für Deutsch, eins für Englisch — oder auch nur eins für beide, dann reicht eine ID)
-3. Die jeweilige Form-ID in `kontakt.njk` (`DEINE-FORM-ID`) und `en/contact.njk` (`YOUR-FORM-ID`) eintragen
+1. Auf web3forms.com die eigene E-Mail-Adresse eingeben und den Access Key erstellen lassen
+2. Den per E-Mail zugesandten Access Key bestätigen
+3. Den Access Key in `kontakt.njk` (`DEIN-ACCESS-KEY`) und `en/contact.njk` (`YOUR-ACCESS-KEY`) eintragen — derselbe Key kann für beide Formulare verwendet werden, beide Sprachen landen dann im selben Postfach
+4. Der Access Key darf öffentlich im Code stehen (er ist wie eine Adresse, kein Passwort) — laut Web3Forms selbst kein Sicherheitsrisiko
 
 ## Cloudflare Web Analytics einrichten
 

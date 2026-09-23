@@ -17,21 +17,25 @@ contactEmail: hallo@meine-reisefaehrten.de
       </div>
 
       <!--
-        NOTE: Cloudflare Pages does not process forms itself.
-        This form runs via Formspree (https://formspree.io):
-        1. Create a free account at formspree.io
-        2. Create a new form, add your email address
-        3. Enter the shown form ID below instead of "YOUR-FORM-ID"
+        NOTE: Cloudflare does not process forms itself.
+        This form runs via Web3Forms (https://web3forms.com) — unlike
+        Formspree, the redirect to a custom thank-you page is included
+        on the free plan there too:
+        1. Create an access key at web3forms.com (using your email address)
+        2. Enter the access key sent to you by email below at "YOUR-ACCESS-KEY"
       -->
-      <form action="https://formspree.io/f/maenjyne" method="POST">
-        <input type="hidden" name="_next" value="https://meine-reisefaehrten.de/en/thank-you/">
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR-ACCESS-KEY">
+        <input type="hidden" name="subject" value="New message via Reisefährten">
+        <input type="hidden" name="redirect" value="https://meine-reisefaehrten.de/en/thank-you/">
+        <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" required>
+          <input type="email" id="email" name="email" required>
         </div>
         <div>
           <label for="motiv">Motif / size (optional)</label>
